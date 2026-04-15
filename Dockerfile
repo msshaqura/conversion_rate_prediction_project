@@ -1,3 +1,4 @@
+# Dockerfile for Conversion Rate Prediction App
 FROM python:3.10-slim
 
 WORKDIR /app
@@ -11,8 +12,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 # Install dependencies
-RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir numpy==1.24.3
+RUN pip install --no-cache-dir scikit-learn==1.3.0
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files
@@ -25,5 +27,6 @@ EXPOSE 7860
 
 ENV STREAMLIT_SERVER_PORT=7860
 ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+ENV STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
 
 CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
