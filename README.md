@@ -82,14 +82,14 @@ Training Data: 284,580 users
 No overfitting: Train F1 (0.762) ≈ Validation F1 (0.767)
 
 📈 Feature Impact (Coefficients)
-| Feature	        |Impact	        |Direction
-|---------------    |---------------|---------
-| Germany	        | +3.57	        | Positive
-| United Kingdom    | +3.40	        | Positive
-| United States	    | +3.06	        | Positive
-| Pages Visited     | +2.53	        | Positive
-| New User	        | -0.79	        | Negative
-| Age	            | -0.60	        | Negative
+| Feature	        |Impact	        |Direction |
+|---------------    |---------------|--------- |
+| Germany	        | +3.57	        | Positive |
+| United Kingdom    | +3.40	        | Positive |
+| United States	    | +3.06	        | Positive |
+| Pages Visited     | +2.53	        | Positive |
+| New User	        | -0.79	        | Negative |
+| Age	            | -0.60	        | Negative |
 
 💡 Business Recommendations
 Increase Page Engagement (Highest Impact)
