@@ -1,8 +1,8 @@
 ---
 title: Conversion Rate Predictor
 emoji: 📧
-colorFrom: black
-colorTo: gray
+colorFrom: gray
+colorTo: green
 sdk: streamlit
 sdk_version: 1.28.0
 app_file: app.py
