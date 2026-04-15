@@ -2,19 +2,28 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
-    curl \
-    git \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./
-COPY src/ ./src/
+# Copy requirements first
+COPY requirements.txt .
 
-RUN pip3 install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir numpy==1.24.3
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 8501
+# Copy application files
+COPY app.py .
+COPY conversion_model.pkl .
+COPY preprocessor.pkl .
+COPY feature_info.pkl .
 
-HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
+EXPOSE 7860
 
-ENTRYPOINT ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+ENV STREAMLIT_SERVER_PORT=7860
+ENV STREAMLIT_SERVER_ADDRESS=0.0.0.0
+
+CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
